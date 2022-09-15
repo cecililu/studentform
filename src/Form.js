@@ -1,7 +1,14 @@
-import React from 'react'
-import { Container, TextField, Typography } from '@mui/material';
+import React,{useState} from 'react'
+import { Container,  Typography } from '@mui/material';
+
+// import { DatePicker } from '@mui/x-date-pickers'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { Personal } from './Personal';
 export const Form = () => {
+  const [selectedDate, setselectedDate] = useState()
   return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div> 
         <div>
         <Typography align='center' variant="h6" component="h2" sx={{mt: 2}}>
@@ -14,21 +21,16 @@ export const Form = () => {
         </Typography>
       </div>
 
-  <Container  sx={{mt:4}}>
+  <Container  sx={{mt:4,mx:1}}>
    <Typography align='left' variant="subtitle1" component="h2" sx={{m: 2,mx:6}} >
        Personal Information
     </Typography>
-  <TextField id="outlined-basic" label="First name" variant="outlined"  sx={{ width: '45%',mx:2,my:1.5}}/>
-  <TextField id="outlined-basic" label="Middle name" variant="outlined" sx={{ width: '45%', mx:2,my:1.5}}/>
-   
-
-  <TextField id="outlined-basic" label="Last name" variant="outlined"  sx={{ width: '45%',mx:2,my:1.5}}/>
-  <TextField id="outlined-basic" label="Middle name" variant="outlined" sx={{ width: '45%', mx:2,my:1.5 }}/>
+     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate}/>
 
   </Container>
   </div>
   
-
+  </LocalizationProvider>
   )
 }
 
