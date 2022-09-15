@@ -22,9 +22,7 @@ export const Form = () => {
       </div>
 
   <Container  sx={{mt:4,mx:1}}>
-   <Typography align='left' variant="subtitle1" component="h2" sx={{m: 2,mx:6}} >
-       Personal Information
-    </Typography>
+  
      <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate}/>
 
   </Container>
