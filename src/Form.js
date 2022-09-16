@@ -6,7 +6,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
 export const Form = () => {
-  const [selectedDate, setselectedDate] = useState()
+  const [selectedDate, setselectedDate] = useState('')
+  const [gender, setGender] = useState("")
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
     <div> 
@@ -21,9 +22,9 @@ export const Form = () => {
         </Typography>
       </div>
 
-  <Container  sx={{mt:4,mx:1,margin:'auto',border:1}}>
+  <Container  sx={{mt:4,mx:1,margin:'auto'}}>
   
-     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate}/>
+     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender}/>
 
   </Container>
   </div>
