@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
 import { Addresss } from './address';
+import { Parent } from './Parent';
 export const Form = () => {
   
 
@@ -25,6 +26,12 @@ export const Form = () => {
       city:"",
       province:'',
       residingcountry:'',
+      father:'',
+      fatherOccupation:'',
+      mother:'',
+      motherOccupation:'',
+      emergencyContactEmail:'',
+      emergencyPhone:'',
       
     },
     onSubmit: values => {
@@ -57,7 +64,9 @@ export const Form = () => {
     <form onSubmit={formik.handleSubmit}>
      <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender} formik={formik}/>
      <Addresss formik={formik}/>
-     <Button sx={{margin:'auto'}} type='submit'>Submit now</Button>   
+     <Parent formik={formik}/>
+     
+      <Button sx={{margin:'auto'}} type='submit'>Submit now</Button>   
      </form>
   </Container>
   </div>
