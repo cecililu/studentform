@@ -3,7 +3,7 @@ import { DatePicker } from "@mui/x-date-pickers"
 import React from 'react'
 
 
-export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}) => {
+export const Personal = ({formik}) => {
   
  console.log(formik.values)
 
@@ -16,7 +16,7 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
   
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
     <InputLabel>First Name</InputLabel>
-    <TextField sx ={{ width:'100%' }} name='firstname' id="firstname" value={formik.values.FirstName} variant="outlined"  onChange={formik.handleChange} />
+    <TextField  error={formik.errors.firstname ? true : false} sx ={{ width:'100%' }} name='firstname' id="firstname" value={formik.values.FirstName} variant="outlined"  onChange={formik.handleChange} />
     </Stack>
    
     

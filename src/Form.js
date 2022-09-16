@@ -1,15 +1,37 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { Button, Container,  Typography } from '@mui/material';
  import { useFormik } from 'formik';
-// import { DatePicker } from '@mui/x-date-pickers'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
 import { Addresss } from './address';
 import { Parent } from './Parent';
+import { Stack } from '@mui/system';
+import * as yup from 'yup';
 export const Form = () => {
-  
-
+  let schema = yup.object().shape({
+    firstname: yup.string().required(),
+      middlename: yup.string().required(),
+      lastname: yup.string().required(),
+      dob:yup.string(),
+      language:yup.string().required(),
+      countryofbirth:yup.string().required(),
+      passportNumber:yup.number().required(),
+      passportExpiry:yup.string(),
+      maritialStatus:yup.string().required(),
+      gender:yup.string().required(),
+      address:yup.string().required(),
+      city:yup.string().required(),
+      province:yup.string().required(),
+      residingcountry:yup.string().required(),
+      email:yup.string().required().email(),
+      father:yup.string().required(),
+      fatherOccupation:yup.string().required(),
+      mother:yup.string().required(),
+      motherOccupation:yup.string().required(),
+      emergencyContactEmail: yup.string().required(),
+      emergencyPhone: yup.number().required(),
+      Emergencyparent:yup.string().required()})
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -38,12 +60,16 @@ export const Form = () => {
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
+    validationSchema:schema
   });
 
+  
+  
 
 
-  const [selectedDate, setselectedDate] = useState('')
-  const [gender, setGender] = useState("")
+
+  // const [selectedDate, setselectedDate] = useState('')
+  // const [gender, setGender] = useState("")
   return (
 
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -63,11 +89,12 @@ export const Form = () => {
 
   <Container  sx={{mt:4,mx:1,margin:'auto'}}>
     <form onSubmit={formik.handleSubmit}>
-     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender} formik={formik}/>
+     <Personal formik={formik}/>
      <Addresss formik={formik}/>
      <Parent formik={formik}/>
-     
-      <Button sx={{margin:'auto'}} type='submit'>Submit now</Button>   
+      <Stack direction='row' justifyContent='start' sx={{width:'90%',margin:'auto'}}>
+        <Button sx={{my:4,background:'orange'}}  variant="contained" type='submit'>Submit now</Button>   
+      </Stack>
      </form>
   </Container>
   </div>

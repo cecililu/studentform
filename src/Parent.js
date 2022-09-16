@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Box, InputLabel, MenuItem, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material"
+import {  Box, InputLabel, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material"
 
 import { FormControlLabel } from '@mui/material';
 
@@ -37,15 +37,16 @@ export const Parent = ({formik}) => {
         </Stack>
         </Stack>
 
-        <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2,}}>
-        <InputLabel>Emergency Contact Parent</InputLabel>
+        <Stack direction='column' columnGap={12}  sx={{mb:2,}}>
+       
         <RadioGroup
        
             name="emergencyparent" id="emergencyparent"
             value={formik.Emergencyparent}
             onChange={formik.handleChange} >
             <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2,}}>  
-            <Stack direction="row" alignItems="start">
+            <Stack direction="column" justifyContent="start" >
+            <InputLabel border={1}>Emergency Contact Parent</InputLabel>
             <FormControlLabel value="Father" control={<Radio />} label="Father" />
             <FormControlLabel value="Mother" control={<Radio />} label="Mother" />
             </Stack>

@@ -1,5 +1,4 @@
 import {  Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material"
-import { DatePicker } from "@mui/x-date-pickers"
 import React from 'react'
 
 export const Addresss = ({formik}) => {
@@ -18,7 +17,7 @@ export const Addresss = ({formik}) => {
       
       <Stack direction='column' alignItems="start" sx={{width:'45%' }}> 
       <InputLabel>City/town</InputLabel>
-      <TextField sx={{width:'100%'}} name='city' id="city"  variant="outlined" value={formik.values.email}  onChange={formik.handleChange}/>
+      <TextField sx={{width:'100%'}} name='city' id="city"  variant="outlined" value={formik.values.city}  onChange={formik.handleChange}/>
       </Stack>
   </Stack>
 
@@ -42,7 +41,7 @@ export const Addresss = ({formik}) => {
             <Select displayEmpty value={formik.values.province} sx ={{width:'100%'}} id='province' name='province' onChange={formik.handleChange}>
               
               <MenuItem value ='' disabled >{formik.values.province ||"Select province"}</MenuItem>
-              <MenuItem value={'Bagmati'}>Bagmat</MenuItem>
+              <MenuItem value={'Bagmati'}>Bagmati</MenuItem>
               <MenuItem value={"Gandaki"}>Gandaki</MenuItem>
               <MenuItem value={"others"}>Other</MenuItem>
             </Select>
