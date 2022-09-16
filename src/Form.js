@@ -21,7 +21,7 @@ export const Form = () => {
         </Typography>
       </div>
 
-  <Container  sx={{mt:4,mx:1}}>
+  <Container  sx={{mt:4,mx:1,margin:'auto',border:1}}>
   
      <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate}/>
 
