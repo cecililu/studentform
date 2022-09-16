@@ -7,7 +7,7 @@ import { DatePicker } from "@mui/x-date-pickers"
 import React from 'react'
 
 
-export const Personal = ({selectedDate, setselectedDate,gender,setGender}) => {
+export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}) => {
   
 
 
@@ -20,21 +20,21 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender}) => {
   
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
     <InputLabel>First Name</InputLabel>
-    <TextField sx ={{ width:'100%' }} name='first-name' id="outlined-basic"  variant="outlined"  />
+    <TextField sx ={{ width:'100%' }} name='firstname' id="firstname" value={formik.values.FirstName} variant="outlined"  onChange={formik.handleChange} />
     </Stack>
    
     
     <Stack direction='column' alignItems="start" sx={{width:'45%' }}> 
     <InputLabel>Middle Name</InputLabel>
-    <TextField sx={{width:'100%'}} name='middle-name' id="outlined-basic"  variant="outlined"/>
+    <TextField sx={{width:'100%'}} name='middlename' id="middlename"  variant="outlined" value={formik.values.middlename}  onChange={formik.handleChange}/>
     </Stack>
 </Stack>
    
   <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2,}}> 
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
-        <InputLabel htmlFor="last-name">Last Name</InputLabel>
-        <TextField  sx ={{width:'100%' }} name='last-name' id="outlined-basic"  variant="outlined" />
+        <InputLabel htmlFor="lastname">Last Name</InputLabel>
+        <TextField  sx ={{width:'100%' }} name='lastname' id="lastname"  variant="outlined"  value={formik.values.lastname}  onChange={formik.handleChange}/>
         </Stack>
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 

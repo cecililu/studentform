@@ -1,17 +1,37 @@
 import React,{useState} from 'react'
-import { Container,  Typography } from '@mui/material';
-
+import { Button, Container,  Typography } from '@mui/material';
+ import { useFormik } from 'formik';
 // import { DatePicker } from '@mui/x-date-pickers'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
+import { margin } from '@mui/system';
 export const Form = () => {
+  
+
+  const formik = useFormik({
+    initialValues: {
+      firstname: '',
+      middlename: '',
+      lastname: '',
+      
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+
+
   const [selectedDate, setselectedDate] = useState('')
   const [gender, setGender] = useState("")
   return (
+
     <LocalizationProvider dateAdapter={AdapterDateFns}>
+  
     <div> 
         <div>
+
         <Typography align='center' variant="h6" component="h2" sx={{mt: 2}}>
         Student Profile
         </Typography>
@@ -23,12 +43,13 @@ export const Form = () => {
       </div>
 
   <Container  sx={{mt:4,mx:1,margin:'auto'}}>
-  
-     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender}/>
-
+    <form onSubmit={formik.handleSubmit}>
+     <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender} formik={formik}/>
+     <Button sx={{margin:'auto'}} type='submit'>Submit now</Button>   
+     </form>
   </Container>
   </div>
-  
+ 
   </LocalizationProvider>
   )
 }
