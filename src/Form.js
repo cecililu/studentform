@@ -5,7 +5,6 @@ import { Button, Container,  Typography } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
-import { margin } from '@mui/system';
 export const Form = () => {
   
 
@@ -14,6 +13,13 @@ export const Form = () => {
       firstname: '',
       middlename: '',
       lastname: '',
+      dob:'',
+      language:'',
+      countryofbirth:'',
+      passportNumber:'',
+      passportExpiry:'',
+      maritialStatus:'',
+      gender:''
       
     },
     onSubmit: values => {
@@ -36,7 +42,7 @@ export const Form = () => {
         Student Profile
         </Typography>
 
-                <Typography align='center' variant="subtitle2" component="h2" sx={{color: "#5B5B5B",my:2}}>
+                <Typography align='center' variant="subtitle2" component="h2" sx={{color: "#5B5B5B", my:2}}>
                 Please enter the information accurately and correctly. The information<br/>
             stored here will be submitted to the university you select.
         </Typography>

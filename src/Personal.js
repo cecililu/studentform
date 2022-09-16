@@ -1,4 +1,4 @@
-import { autocompleteClasses, Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material"
+import {  Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material"
 import { DatePicker } from "@mui/x-date-pickers"
 // import SelectUnstyled from '@mui/base/SelectUnstyled';
 // import OptionUnstyled from '@mui/base/OptionUnstyled';
@@ -9,14 +9,14 @@ import React from 'react'
 
 export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}) => {
   
-
+ console.log(formik.values)
 
   return (
-  <Box  alignItems="center" minHeight="100vh" sx={{width:'90%',margin:'auto'}}>
-  <Typography align='left' variant="subtitle1" component="h2" sx={{my:1,fontWeight: 'bold',textDecoration: 'underline'}} >
+  <Box  alignItems="center" minHeight="" sx={{width:'90%',margin:'auto'}}>
+  <Typography align='left' variant="subtitle1" component="h4" sx={{my:5,fontWeight: 'bold',textDecoration: 'underline'}} >
     Personal Information
   </Typography>  
- <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2,}}>
+ <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2,}}>
   
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
     <InputLabel>First Name</InputLabel>
@@ -30,7 +30,7 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
     </Stack>
 </Stack>
    
-  <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2,}}> 
+  <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2,}}> 
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
         <InputLabel htmlFor="lastname">Last Name</InputLabel>
@@ -39,54 +39,51 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
             <InputLabel htmlFor="dob"> Date of Birth</InputLabel>
-            <DatePicker id='dob' sx={{width:'100%' }}  renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-            value={selectedDate} onChange={(newvalue)=> setselectedDate(newvalue)}/>
+            <DatePicker id='dob' sx={{width:'100%' }} name='dob' renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
+            value={formik.values.dob} onChange={formik.handleChange}/>
        </Stack>
   </Stack>
 
-  <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2}}>
+  <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2}}>
      
+     
+      <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
+          <InputLabel htmlFor="language"> Native Language</InputLabel>
+          <TextField sx ={{width:'100%' }} id="language" label="Native Language" value={formik.values.language} variant="outlined" onChange={formik.handleChange}  />
+      </Stack>
      
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
-        <InputLabel> Date of Birth</InputLabel>
-        <TextField sx ={{width:'100%' }} id="outlined-basic" label="Native Language" variant="outlined"  />
-    </Stack>
-     
-    <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
-        <InputLabel htmlFor="country"> Country Of Birth</InputLabel> 
-        <TextField sx={{width:'100%'}} id="outlined-basic" name='country' variant="outlined"/>
+        <InputLabel htmlFor="countryofbirth"> Country Of Birth</InputLabel> 
+        <TextField sx={{width:'100%'}} id="countryofbirth" name='countryofbirth' variant="outlined" value={formik.values.countryofbirth}  onChange={formik.handleChange} />
     </Stack>
   </Stack>
 
 
-  <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2,}}> 
+  <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2,}}> 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
             <InputLabel htmlFor="pass"> Passport Number</InputLabel> 
-           <TextField  sx ={{width:'100%' }} name='pass' id="outlined-basic"  variant="outlined" />
+           <TextField  sx ={{width:'100%' }}  id="passportNumber"  name="passportNumber" variant="outlined" value={formik.values.passportNumber}  onChange={formik.handleChange} />
        </Stack>
 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}>  
-            <InputLabel htmlFor="pass-exp"> Country Of Birth</InputLabel> 
-            <DatePicker name='pass-exp' sx={{width:'100px' }}   renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-            value={selectedDate} onChange={(newvalue)=> setselectedDate(newvalue)}/>
+            <InputLabel htmlFor="passportExpiry"> Passport Expiry Date</InputLabel> 
+            <DatePicker name='passportExpiry' id='passportExpiry' sx={{width:'100px' }}   renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
+            value={formik.values.passportExpiry}  onChange={formik.handleChange} />
         </Stack>
   </Stack>
 
 
-  <Stack direction='row' columnGap={15} justifyContent='start' sx={{mb:2}}> 
+  <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2}}> 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
-            <InputLabel htmlFor="maritial-status"> Maritial Status</InputLabel> 
-           <TextField  sx ={{width:'100%' }} name='maritial-status' id="outlined-basic"  variant="outlined" />
+            <InputLabel htmlFor="maritialStatus"> Maritial Status</InputLabel> 
+           <TextField  sx ={{width:'100%' }} name='maritialStatus' id="maritialStatus"  value={formik.values.maritialStatus} />
        </Stack>
 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}>  
             <InputLabel htmlFor="pass-exp">Gender</InputLabel> 
-            <Select displayEmpty value={gender} sx ={{width:'100%'}}
-            onChange={(e)=>{
-             console.log( e.target.value)
-             setGender(e.target.value)
-            }}>
-              <MenuItem value ='' disabled>Gender</MenuItem>
+            <Select displayEmpty value={formik.values.gender} sx ={{width:'100%'}} id='gender' name='gender' onChange={formik.handleChange}>
+              
+              <MenuItem value ='' disabled >{formik.values.gender ||"GENDER"}</MenuItem>
               <MenuItem value={'male'}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
               <MenuItem value={"others"}>Other</MenuItem>
