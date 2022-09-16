@@ -5,6 +5,7 @@ import { Button, Container,  Typography } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { Personal } from './Personal';
+import { Addresss } from './address';
 export const Form = () => {
   
 
@@ -19,7 +20,11 @@ export const Form = () => {
       passportNumber:'',
       passportExpiry:'',
       maritialStatus:'',
-      gender:''
+      gender:'',
+      address:'',
+      city:"",
+      province:'',
+      residingcountry:'',
       
     },
     onSubmit: values => {
@@ -51,6 +56,7 @@ export const Form = () => {
   <Container  sx={{mt:4,mx:1,margin:'auto'}}>
     <form onSubmit={formik.handleSubmit}>
      <Personal setselectedDate={setselectedDate}  selectedDate={selectedDate} gender={gender} setGender={setGender} formik={formik}/>
+     <Addresss formik={formik}/>
      <Button sx={{margin:'auto'}} type='submit'>Submit now</Button>   
      </form>
   </Container>

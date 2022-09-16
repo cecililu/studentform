@@ -1,9 +1,5 @@
 import {  Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material"
 import { DatePicker } from "@mui/x-date-pickers"
-// import SelectUnstyled from '@mui/base/SelectUnstyled';
-// import OptionUnstyled from '@mui/base/OptionUnstyled';
-
-
 import React from 'react'
 
 
@@ -40,7 +36,7 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
             <InputLabel htmlFor="dob"> Date of Birth</InputLabel>
             <DatePicker id='dob' sx={{width:'100%' }} name='dob' renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-            value={formik.values.dob} onChange={formik.handleChange}/>
+             selected={formik.values.dob} value={formik.values.dob} onChange={formik.setFeildValue}/>
        </Stack>
   </Stack>
 
@@ -68,7 +64,7 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}>  
             <InputLabel htmlFor="passportExpiry"> Passport Expiry Date</InputLabel> 
             <DatePicker name='passportExpiry' id='passportExpiry' sx={{width:'100px' }}   renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-            value={formik.values.passportExpiry}  onChange={formik.handleChange} />
+           selected={formik.values.dob} value={formik.values.passportExpiry} onChange={formik.setFeildValue}/>
         </Stack>
   </Stack>
 
@@ -83,7 +79,7 @@ export const Personal = ({selectedDate, setselectedDate,gender,setGender,formik}
             <InputLabel htmlFor="pass-exp">Gender</InputLabel> 
             <Select displayEmpty value={formik.values.gender} sx ={{width:'100%'}} id='gender' name='gender' onChange={formik.handleChange}>
               
-              <MenuItem value ='' disabled >{formik.values.gender ||"GENDER"}</MenuItem>
+              <MenuItem value ='' disabled >{formik.values.gender ||"Gender"}</MenuItem>
               <MenuItem value={'male'}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
               <MenuItem value={"others"}>Other</MenuItem>
