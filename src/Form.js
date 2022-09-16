@@ -32,6 +32,7 @@ export const Form = () => {
       motherOccupation:'',
       emergencyContactEmail:'',
       emergencyPhone:'',
+      Emergencyparent:'',
       
     },
     onSubmit: values => {
