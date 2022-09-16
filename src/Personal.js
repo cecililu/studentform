@@ -4,8 +4,7 @@ import React from 'react'
 
 
 export const Personal = ({formik}) => {
-  
- console.log(formik.values)
+
 
   return (
   <Box  alignItems="center" minHeight="" sx={{width:'90%',margin:'auto'}}>
@@ -16,13 +15,15 @@ export const Personal = ({formik}) => {
   
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
     <InputLabel>First Name</InputLabel>
-    <TextField  error={formik.errors.firstname ? true : false} sx ={{ width:'100%' }} name='firstname' id="firstname" value={formik.values.FirstName} variant="outlined"  onChange={formik.handleChange} />
+    <TextField  error={ formik.errors.firstname ? true:false} helperText={formik.errors.firstname} sx ={{ width:'100%' }} name='firstname' id="firstname" value={formik.values.FirstName} variant="outlined"  onChange={formik.handleChange} />
     </Stack>
    
     
     <Stack direction='column' alignItems="start" sx={{width:'45%' }}> 
     <InputLabel>Middle Name</InputLabel>
-    <TextField sx={{width:'100%'}} name='middlename' id="middlename"  variant="outlined" value={formik.values.middlename}  onChange={formik.handleChange}/>
+    <TextField sx={{width:'100%'}} name='middlename' id="middlename"  variant="outlined" value={formik.values.middlename} 
+     onChange={formik.handleChange}
+     error={ formik.errors.middlename ? true:false} helperText={formik.errors.middlename}/>
     </Stack>
 </Stack>
    
@@ -30,22 +31,26 @@ export const Personal = ({formik}) => {
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
         <InputLabel htmlFor="lastname">Last Name</InputLabel>
-        <TextField  sx ={{width:'100%' }} name='lastname' id="lastname"  variant="outlined"  value={formik.values.lastname}  onChange={formik.handleChange}/>
+        <TextField  error={ formik.errors.lastname ? true:false} helperText={formik.errors.lastname} sx ={{width:'100%' }} name='lastname' id="lastname"  variant="outlined"  value={formik.values.lastname}  onChange={formik.handleChange}/>
         </Stack>
 
         <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
             <InputLabel htmlFor="dob"> Date of Birth</InputLabel>
-            <DatePicker id='dob' sx={{width:'100%' }} name='dob' renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-             selected={formik.values.dob} value={formik.values.dob} onChange={formik.setFeildValue}/>
+            <DatePicker  value={"" ||formik.values.dob}id='dob' sx={{width:'100%' }} name='dob' renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
+              onChange={(date)=>{
+               
+                formik.setFieldValue('dob',date)
+                   
+              }}/>
        </Stack>
-  </Stack>
+     </Stack>
 
   <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2}}>
      
      
       <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
           <InputLabel htmlFor="language"> Native Language</InputLabel>
-          <TextField sx ={{width:'100%' }} id="language" label="Native Language" value={formik.values.language} variant="outlined" onChange={formik.handleChange}  />
+          <TextField sx ={{width:'100%' }} id="language" value={formik.values.language} variant="outlined" onChange={formik.handleChange}  />
       </Stack>
      
     <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
@@ -64,7 +69,9 @@ export const Personal = ({formik}) => {
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}>  
             <InputLabel htmlFor="passportExpiry"> Passport Expiry Date</InputLabel> 
             <DatePicker name='passportExpiry' id='passportExpiry' sx={{width:'100px' }}   renderInput={(params)=><TextField {...params} sx={{width: '100%'}}/>}
-           selected={formik.values.dob} value={formik.values.passportExpiry} onChange={formik.setFeildValue}/>
+           selected={formik.values.passportExpiry} onChange={(date)=>{
+            formik.setFieldValue('passportExpiry',date)      
+          }}/>
         </Stack>
   </Stack>
 
@@ -72,7 +79,7 @@ export const Personal = ({formik}) => {
   <Stack direction='row' columnGap={12} justifyContent='start' sx={{mb:2}}> 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}> 
             <InputLabel htmlFor="maritialStatus"> Maritial Status</InputLabel> 
-           <TextField  sx ={{width:'100%' }} name='maritialStatus' id="maritialStatus"  value={formik.values.maritialStatus} />
+           <TextField  sx ={{width:'100%' }} name='maritialStatus' id="maritialStatus"  value={formik.values.maritialStatus} onChange={formik.handleChange}/>
        </Stack>
 
        <Stack direction='column' alignItems="start" sx={{ width:'45%' }}>  

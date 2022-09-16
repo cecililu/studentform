@@ -31,7 +31,9 @@ export const Form = () => {
       motherOccupation:yup.string().required(),
       emergencyContactEmail: yup.string().required(),
       emergencyPhone: yup.number().required(),
-      Emergencyparent:yup.string().required()})
+      
+    })
+
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -54,7 +56,7 @@ export const Form = () => {
       motherOccupation:'',
       emergencyContactEmail:'',
       emergencyPhone:'',
-      Emergencyparent:'',
+      emergencyparent:'',
       
     },
     onSubmit: values => {
@@ -64,12 +66,6 @@ export const Form = () => {
   });
 
   
-  
-
-
-
-  // const [selectedDate, setselectedDate] = useState('')
-  // const [gender, setGender] = useState("")
   return (
 
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -92,9 +88,11 @@ export const Form = () => {
      <Personal formik={formik}/>
      <Addresss formik={formik}/>
      <Parent formik={formik}/>
+
       <Stack direction='row' justifyContent='start' sx={{width:'90%',margin:'auto'}}>
         <Button sx={{my:4,background:'orange'}}  variant="contained" type='submit'>Submit now</Button>   
       </Stack>
+      
      </form>
   </Container>
   </div>
